@@ -1,5 +1,15 @@
-# atom-tt package
+# atom  🔫 tt 🔫
 
-A short description of your package.
+TT - `Text Translate` also known as [TT pistol](https://en.wikipedia.org/wiki/TT_pistol)
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+![Fast & Simple in use](https://upload.wikimedia.org/wikipedia/commons/c/c6/Tokarev_TT-33_Post-1947_version.jpeg)
+
+This package aims to be a fast an reliable way to translate your text from any language to any language, select your text, hit `ctrl-cmd-\` and you will be able to translate on any language you need
+
+## TODO driven development
+
+- [ ] Write docs
+- [ ] setup API
+- [ ] Design the app
+- [ ] Write some spec
+- [x] Setup env   
