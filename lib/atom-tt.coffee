@@ -8,7 +8,7 @@ module.exports = AtomTt =
 
   activate: (state) ->
     @ttView = new TTView
-    @modalPanel = atom.workspace.addModalPanel(item: @ttView, visible: false)
+    @modalPanel = atom.workspace.addModalPanel(item: @ttView, visible: false, className: 'tt-panel')
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable

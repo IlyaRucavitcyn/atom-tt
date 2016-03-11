@@ -1,26 +1,21 @@
 {View} = require 'space-pen'
-# {TextEditorView} = require 'atom-space-pen-views'
+{TextEditorView} = require 'atom-space-pen-views'
 
 module.exports =
 class MyView extends View
   @content: ->
     @div =>
-      @div "Type your 22:"
       @raw """
-      <h1>Hi</h1>
-      <div class='block'>
-          <label>You might want to type something here.</label>
-          <atom-text-editor mini>Something you typed...</atom-text-editor>
-      </div>
-      <div class='block'>
-          <label class='icon icon-file-directory'>Another field with an icon</label>
-          <atom-text-editor mini>Something else you typed...</atom-text-editor>
-      </div>
-      <div class='block'>
-          <button class='btn'>Do it</button>
-      </div>
-      <ul class='background-message'>
-        <li>No Results</li>
-      </ul>
+      <atom-panel class='top'>
+          <div class="padded">
+              <div class="inset-panel">
+                  <div class="panel-body">
+                    <atom-text-editor gutter-hidden class="tt-from-lang">User input</atom-text-editor>
+                  </div>
+                    <atom-text-editor gutter-hidden class="tt-from-lang">User input</atom-text-editor>
+                  </div>
+              </div>
+          </div>
+      </atom-panel>
       """
       # @subview 'answer', new TextEditorView(mini: true)
