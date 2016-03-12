@@ -19,6 +19,7 @@ module.exports = AtomTt =
   deactivate: ->
     @modalPanel.destroy()
     @subscriptions.dispose()
+    @ttView.destroy()
 
   serialize: ->
     ttViewState: @ttView.serialize()
@@ -27,4 +28,5 @@ module.exports = AtomTt =
     if @modalPanel.isVisible()
       @modalPanel.hide()
     else
+      @ttView.translate()
       @modalPanel.show()
