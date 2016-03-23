@@ -1,15 +1,22 @@
 {View} = require 'space-pen'
 {TextEditorView} = require 'atom-space-pen-views'
 request = require 'request-promise'
+cheerio = require 'cheerio'
 
 module.exports =
 class TTView extends View
   @content: ->
     @div class: 'block', =>
-      @subview 'srcLang', new TextEditorView
-        placeholderText: 'Hi there, we are ready to translation ...'
-      @subview 'destLang', new TextEditorView
-        placeholderText: 'translation'
+      @div class: 'row', =>
+        @div class: 'col-md-6', =>
+          @subview 'srcLang', new TextEditorView
+            placeholderText: 'Hi there, we are ready to translation ...'
+        @div class: 'col-md-6', =>
+          @subview 'destLang', new TextEditorView
+            placeholderText: 'translation'
+      @div class: 'row', =>
+        @div class: 'col-md-6', =>
+          @div outlet: "description"
 
   destroy: ->
 
@@ -28,13 +35,23 @@ class TTView extends View
         format: 'plain'
       json: true
 
+    descriptionTest =
+      uri: "https://slovari.yandex.ru/#{that.getSelectedText()}/en-ru"
+
+    request(descriptionTest).then((response) ->
+      $ = cheerio.load(cheerio.load(response)('.b-translation__card_examples_three').html());
+      $('a').replaceWith($('<span>'))
+      that.description.append($.html())
+    )
+
     request(options).then((response) ->
       if text = response.text[0]
         that.destLang.setText(text)
       else
         that.destLang.setText('uups')
-    ).catch (err) ->
+    ).catch((err) ->
       that.destLang.setText(err)
+    ).then ->
 
   setSpinner: ->
 

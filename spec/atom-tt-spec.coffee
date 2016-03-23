@@ -1,3 +1,5 @@
+mockery = require 'mockery'
+fs = require 'fs'
 AtomTt = require '../lib/atom-tt'
 
 describe "AtomTt", ->
@@ -44,3 +46,36 @@ describe "AtomTt", ->
         expect(atomTtElement).toBeVisible()
         atom.commands.dispatch workspaceElement, 'atom-tt:toggle'
         expect(atomTtElement).not.toBeVisible()
+
+    describe "translate selected text", ->
+
+      beforeEach ->
+        filename = "response.json"
+        mockery.enable
+            warnOnReplace: false,
+            warnOnUnregistered: false,
+            useCleanCache: true
+
+        mockery.registerMock 'request-promise', ->
+            response = fs.readFileSync(__dirname + '/spec/' + filename, 'utf8');
+            Promise.resolve(response.trim());
+
+      afterEach ->
+        mockery.disable();
+        mockery.deregisterAll();
+
+      it "will translate from En to Ru by default", ->
+        waitsForPromise ->
+          activationPromise
+
+        editor = atom.workspace.getActiveTextEditor()
+        editor.setText('Hello world')
+        editor.selectAll()
+        atom.commands.dispatch atom.views.getView(atom.workspace), 'atom-tt:toggle'
+
+        debugger
+          # waitsFor ->
+          #   translationService.translateTextLines.callCount > 0
+          # runs ->
+          #   expect(translationService.translateTextLines).toHaveBeenCalledWith(
+          #     ['Hello world'], 'en', 'ru')
