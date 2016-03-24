@@ -5,6 +5,11 @@ module.exports = AtomTt =
   ttView: null
   modalPanel: null
   subscriptions: null
+  config:
+    yandexApiKey:
+      type: 'string'
+      default: 'trnsl.1.1.20131018T064214Z.13f606fa635023bc.4f4ca095e1f2c70c3cc0ed9be9d55b2822a4b3b3'
+      description: 'You can get your API key here https://tech.yandex.com/keys/get/?service=trnsl'
 
   activate: (state) ->
     @ttView = new TTView

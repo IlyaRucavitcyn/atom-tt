@@ -25,19 +25,13 @@ class TTView extends View
     atom.workspace.getActiveTextEditor().getSelectedText()
 
   translator: ->
-    new YandexTranslator
+    @transator ||= new YandexTranslator(atom.config.get('atom-tt.yandexApiKey'))
 
   getDirection: ->
     'en-ru'
 
   translate: ->
-    @srcLang.setText(@getSelectedText())
-    @translator().translate @getSelectedText(), @getDirection(), ((translation) =>
-        @destLang.setText(translation)
-      ), ((err) =>
-        console.log err
-        @destLang.setText('uups')
-      )
+    @translator().translate(@)
 
     # debugger
 
@@ -71,6 +65,11 @@ class TTView extends View
     # ).then ->
 
   setSpinner: ->
+    @description.append("<span class='loading loading-spinner-medium inline-block'></span>")
+
+  removeSpinner: ->
+    @description.html('')
+    # @description.replaceWith('')
 
     # @translation.setText(text)
 

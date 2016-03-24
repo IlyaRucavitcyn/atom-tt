@@ -24,12 +24,12 @@ class Translator
     #    format: 'plain'
     #  json: true
 
-  translate: (text, direction, onSuccess, onFail) ->
-    @setTextToTranslate(text)
-    @setDirection(direction)
-
-    request(@getOptions()).then((response) ->
-      onSuccess(response)
-    ).catch((err) ->
-      onFail(err)
-    )
+  # translate: (text, direction, onSuccess, onFail) ->
+  #   @setTextToTranslate(text)
+  #   @setDirection(direction)
+  #
+  #   request(@getOptions()).then((response) ->
+  #     onSuccess(response)
+  #   ).catch((err) ->
+  #     onFail(err)
+  #   )
