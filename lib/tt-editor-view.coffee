@@ -8,7 +8,6 @@ class TTEditorView extends View
     @instantTranslation = false
 
     @element = document.createElement('atom-text-editor')
-    @element.focus() if htmlClass is 'source-lang'
     @element.classList.add(htmlClass)
 
     model = @element.getModel()
@@ -27,12 +26,6 @@ class TTEditorView extends View
 
   onDidStopChanging: (callback) ->
     @model.onDidStopChanging(callback)
-
-  # instantTranslationEnable: ->
-  #   unless @instantTranslation
-  #     @model.
-  #     @instantTranslation = true
-
 
   # Public: Get the underlying editor model for this view.
   #
