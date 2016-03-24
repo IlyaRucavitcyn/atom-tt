@@ -31,12 +31,9 @@ class TTView extends View
     'en-ru'
 
   translate: ->
-    @srcLang.setText(text)
-    @translator().translate @getSelectedText(), @getDirection(), ((response) =>
-            if text = response.text[0]
-              @destLang.setText(text)
-            else
-              @destLang.setText('uups')
+    @srcLang.setText(@getSelectedText())
+    @translator().translate @getSelectedText(), @getDirection(), ((translation) =>
+        @destLang.setText(translation)
       ), ((err) =>
         console.log err
         @destLang.setText('uups')

@@ -13,7 +13,20 @@ class YandexTranslator extends Translator
        format: 'plain'
      json: true
 
+  translate: (text, direction, onSuccess, onFail) ->
+    @setTextToTranslate(text)
+    @setDirection(direction)
 
+    request(@getOptions()).then((response) ->
+      if text = response.text[0]
+        onSuccess(text)
+      else
+        onFail('uups nothing to translate')
+    ).catch((err) ->
+      onFail(err)
+    )
+
+    
   #
   # translate: ->
   #   @srcLang.setText(@getSelectedText())
