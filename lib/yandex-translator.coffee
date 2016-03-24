@@ -16,11 +16,15 @@ class YandexTranslator extends Translator
 
   translate: (view) ->
     textToTransate = view.getSelectedText()
+    view.srcLang.getModel().setSoftWrapped(true)
+    view.srcLang.focus()
     view.srcLang.setText(textToTransate)
     @setTextToTranslate(textToTransate)
     view.setSpinner()
 
     @setDirection(view.getDirection())
+
+    debugger
 
     request(@getOptions()).then((response) ->
       if text = response.text[0]

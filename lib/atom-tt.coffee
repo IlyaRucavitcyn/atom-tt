@@ -20,6 +20,7 @@ module.exports = AtomTt =
 
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'atom-tt:toggle': => @toggle()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-tt:close': => @close()
 
   deactivate: ->
     @modalPanel.destroy()
@@ -28,6 +29,10 @@ module.exports = AtomTt =
 
   serialize: ->
     ttViewState: @ttView.serialize()
+
+  close: ->
+    if @modalPanel.isVisible()
+      @modalPanel.hide()
 
   toggle: ->
     if @modalPanel.isVisible()

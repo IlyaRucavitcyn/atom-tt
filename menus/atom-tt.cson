@@ -4,6 +4,10 @@
     {
       'label': 'Toggle atom-tt'
       'command': 'atom-tt:toggle'
+    },
+    {
+      'label': 'Close atom-tt'
+      'command': 'atom-tt:close'
     }
   ]
 'menu': [

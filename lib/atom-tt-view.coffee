@@ -1,7 +1,5 @@
 {View} = require 'space-pen'
-{TextEditorView} = require 'atom-space-pen-views'
-request = require 'request-promise'
-cheerio = require 'cheerio'
+TTEditorView = require './tt-editor-view'
 YandexTranslator = require './yandex-translator'
 
 module.exports =
@@ -10,11 +8,11 @@ class TTView extends View
     @div class: 'block', =>
       @div class: 'row', =>
         @div class: 'col-md-6', =>
-          @subview 'srcLang', new TextEditorView
-            placeholderText: 'Hi there, we are ready to translation ...'
+          @subview 'srcLang', new TTEditorView
+            placeholderText: 'Hi there, we are ready to translation ...', htmlClass: 'source-lang'
         @div class: 'col-md-6', =>
-          @subview 'destLang', new TextEditorView
-            placeholderText: 'translation'
+          @subview 'destLang', new TTEditorView
+            placeholderText: 'translation', htmlClass: 'dest-lang'
       @div class: 'row', =>
         @div class: 'col-md-6', =>
           @div outlet: "description"

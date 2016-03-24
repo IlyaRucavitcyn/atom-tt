@@ -7,33 +7,47 @@
 atom-panel.modal.tt-panel {
   left: 0;
   margin: auto;
+  padding: 20px;
   width: 100%;
   height: 100%;
   overflow: scroll;
   background-color: rgba(0, 0, 0, 0.4);
 
-  .source-lang {
-    position: absolute;
-    top:0;
-    width: 100%;
-    min-height: 400px;
-    max-height: 400px;
-    height: 400px
-    margin: 10px;
-    font-size: @input-font-size + 1;
-    box-shadow: 0 2px 8px 1px rgba(0, 0, 0, 0.3)
+  atom-text-editor, :host {
+    outline: none;
+    background-color: #1b1d23;
+    min-height: 320px;
+    border-radius: 3px;
+    padding: 1.2em;
+  }
+
+  .source-lang.is-focused {
+    border-color: #528bff;
+    box-shadow: 0 0 0 1px #528bff;
+  }
+
+  .dest-lang, .source-lang {
+    border-color: @base-background-color;
+    box-shadow: 0 0 0 1px @base-background-color;
   }
 
   atom-text-editor::shadow {
+
+    .gutter-container {
+      display: none;
+    }
+
     .cursor {
       border-color: red;
     }
+
     .indent-guide {
       box-shadow: none;
     }
 
     .cursor-line {
       background: @base-background-color;
+      background-color: #1b1d23;
     }
 
     .gutter {
