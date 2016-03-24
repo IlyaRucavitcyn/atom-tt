@@ -15,16 +15,10 @@ class YandexTranslator extends Translator
      json: true
 
   translate: (view) ->
-    textToTransate = view.getSelectedText()
-    view.srcLang.getModel().setSoftWrapped(true)
-    view.srcLang.focus()
-    view.srcLang.setText(textToTransate)
-    @setTextToTranslate(textToTransate)
-    view.setSpinner()
-
+    @setTextToTranslate(view.getTextToTransate())
     @setDirection(view.getDirection())
 
-    debugger
+    view.setSpinner()
 
     request(@getOptions()).then((response) ->
       if text = response.text[0]
@@ -37,3 +31,23 @@ class YandexTranslator extends Translator
       view.destLang.setText('uups :(')
       view.removeSpinner()
     )
+
+  # translate: (view) ->
+  #   textToTransate = view.getSelectedText()
+  #   view.srcLang.setText(textToTransate)
+  #   @setTextToTranslate(textToTransate)
+  #   view.setSpinner()
+  #
+  #   @setDirection(view.getDirection())
+  #
+  #   request(@getOptions()).then((response) ->
+  #     if text = response.text[0]
+  #       view.destLang.setText(text)
+  #       view.removeSpinner()
+  #     else
+  #       view.destLang.setText('uups nothing to translate')
+  #       view.removeSpinner()
+  #   ).catch((err) ->
+  #     view.destLang.setText('uups :(')
+  #     view.removeSpinner()
+  #   )

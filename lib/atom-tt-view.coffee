@@ -19,8 +19,11 @@ class TTView extends View
 
   destroy: ->
 
-  getSelectedText: ->
-    atom.workspace.getActiveTextEditor().getSelectedText()
+  setTextToTransate: (text)->
+    @srcLang.setText(text)
+
+  getTextToTransate: ->
+    @srcLang.getText()
 
   translator: ->
     @transator ||= new YandexTranslator(atom.config.get('atom-tt.yandexApiKey'))
@@ -29,7 +32,12 @@ class TTView extends View
     'en-ru'
 
   translate: ->
-    @translator().translate(@)
+    return if @instantTranslation
+
+    @instantTranslation = true
+    @srcLang.onDidStopChanging =>
+      @translator().translate(@)
+
 
     # debugger
 

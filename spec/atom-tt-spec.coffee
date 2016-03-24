@@ -73,7 +73,7 @@ describe "AtomTt", ->
         editor.selectAll()
         atom.commands.dispatch atom.views.getView(atom.workspace), 'atom-tt:toggle'
 
-        debugger
+        # debugger
           # waitsFor ->
           #   translationService.translateTextLines.callCount > 0
           # runs ->
