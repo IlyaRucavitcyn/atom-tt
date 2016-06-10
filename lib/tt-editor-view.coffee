@@ -9,6 +9,7 @@ class TTEditorView extends View
 
     @element = document.createElement('atom-text-editor')
     @element.classList.add(htmlClass)
+    @element.style.height = '300px'
 
     model = @element.getModel()
     model.setPlaceholderText(placeholderText)

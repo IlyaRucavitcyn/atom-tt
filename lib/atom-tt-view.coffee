@@ -7,10 +7,27 @@ class TTView extends View
   @content: ->
     @div class: 'block', =>
       @div class: 'row', =>
+        @div class: 'col-md-1 col-md-offset-11 translate', =>
+          @button class: 'btn btn-info inline-block-tight', 'Translate'
+      @div class: 'row', =>
         @div class: 'col-md-6', =>
+          @div class: 'panel', =>
+            @span class: 'picon change-picon'
+            @span class: 'picon delete-picon'
+            @span class: 'picon edit-picon'
+            @span class: 'picon list-picon'
+            @span class: 'picon sound-picon'
+            @span class: 'picon translate-picon'
           @subview 'srcLang', new TTEditorView
             placeholderText: 'Hi there, we are ready to translation ...', htmlClass: 'source-lang'
         @div class: 'col-md-6', =>
+          @div class: 'panel', =>
+            @span class: 'picon change-picon'
+            @span class: 'picon delete-picon'
+            @span class: 'picon edit-picon'
+            @span class: 'picon list-picon'
+            @span class: 'picon sound-picon'
+            @span class: 'picon translate-picon'
           @subview 'destLang', new TTEditorView
             placeholderText: 'translation', htmlClass: 'dest-lang'
       @div class: 'row', =>

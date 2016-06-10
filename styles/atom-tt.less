@@ -5,16 +5,96 @@
 @import "ui-variables";
 
 atom-panel.modal.tt-panel {
-  margin: 0;
   width: 100%;
   min-width: 100%;
   height: 100%;
   min-height: 900px;
 
-  atom-text-editor::shadow {
+  .block {
+    padding: 0 10px 0 10px;
+  }
 
-    .gutter- {
+  .translate {
+    button {
+      margin: 10px 0 20px 0;
+      text-transform: uppercase;
+    }
+
+    height: 60px;
+  }
+
+
+  .panel {
+    position: relative;
+    margin-bottom: -40px;
+    height: 40px;
+
+    .picon {
+      position: absolute;
+      margin: 10px;
+      // float: left;
+      // margin-bottom: -25px;
+      // display: block;
+      text-indent: -9999px;
+      width: 16px;
+      height: 16px;
+    }
+
+    .change-picon {
+      right: 15px;
+      background: url(atom://atom-tt/icons/change.svg);
+      background-size: 16px 16px;
+    }
+    .delete-picon {
+      background: url(atom://atom-tt/icons/delete.svg);
+      background-size: 16px 16px;
+    }
+
+    .edit-picon {
+      background: url(atom://atom-tt/icons/edit.svg);
+      background-size: 16px 16px;
+    }
+
+    .list-picon {
+      background: url(atom://atom-tt/icons/list.svg);
+      background-size: 16px 16px;
+    }
+
+    .sound-picon {
+      background: url(atom://atom-tt/icons/sound.svg);
+      background-size: 16px 16px;
+    }
+
+    .translate-picon {
+      background: url(atom://atom-tt/icons/translate.svg);
+      background-size: 16px 16px;
+    }
+  }
+
+  .source-lang.is-focused {
+    border-color: #528bff;
+    box-shadow: 0 0 0 1px #528bff;
+  }
+
+  .dest-lang, .source-lang {
+    border: 1px solid #181a1f;
+    padding:  40px 10px 10px 10px;
+    // border-color: @base-background-color;
+    box-shadow: 0 0 0 1px @base-background-color;
+  }
+
+  .dest-lang {
+    background-color: @background-color-highlight;
+  }
+
+
+  atom-text-editor::shadow {
+    .gutter {
       display: none;
+    }
+
+    .cursor-line {
+      background: none;
     }
 
     .cursor {
@@ -25,16 +105,15 @@ atom-panel.modal.tt-panel {
       box-shadow: none;
     }
 
-    // .cursor-line {
-    //   background: @base-background-color;
-    //   background-color: #1b1d23;
-    // }
-
-    .gutter {
-      visibility: hidden;
+    .gutter-container {
+      display: none;
     }
-  }
 
+    .indent-guide {
+      box-shadow: none;
+    }
+
+  }
 }
 
 
