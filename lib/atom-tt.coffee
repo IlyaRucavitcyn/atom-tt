@@ -35,13 +35,13 @@ module.exports = AtomTt =
       @modalPanel.hide()
 
   toggle: ->
-    selectedText = atom.workspace.getActiveTextEditor()?.getSelectedText()?
+    selectedText = atom.workspace.getActiveTextEditor()?.getSelectedText()
     textToTransate = @ttView.getTextToTransate()
 
     if @modalPanel.isVisible()
       @modalPanel.hide()
     else
-      if selectedText.length > 0
+      if textToTransate.length == 0 and selectedText.length > 0
         @ttView.setTextToTransate(selectedText)
       else
         @ttView.setTextToTransate(textToTransate)

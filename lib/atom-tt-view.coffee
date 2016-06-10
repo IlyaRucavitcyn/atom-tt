@@ -60,7 +60,8 @@ class TTView extends View
 
   prononce: (textToPrononce) ->
     url = "http://api.voicerss.org/?key=0fb100d6285c4016a785b8e8b638e006&src=#{encodeURIComponent(textToPrononce)}&hl=en-us"
-    audio = new Audio(url)
+    urlGoogle = "http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q=#{encodeURIComponent(textToPrononce)}&tl=En-gb"
+    audio = new Audio(urlGoogle)
     audio.play()
 
   attached: ->
