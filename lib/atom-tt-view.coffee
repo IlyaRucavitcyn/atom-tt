@@ -9,7 +9,7 @@ class TTView extends View
       @div class: 'row', =>
         @div class: 'col-md-1 col-md-offset-11 translate', =>
           @div outlet: "ttaction", '&nbsp;'
-          @button class: 'btn btn-info inline-block-tight', 'Translate'
+          @button class: 'btn btn-info inline-block-tight transbtnaction', 'Translate'
       @div class: 'row', =>
         @div class: 'col-md-6', =>
           @div class: 'panel', =>
@@ -57,6 +57,19 @@ class TTView extends View
 
   setSpinner: ->
     @ttaction.html("<progress class='inline-block'></progress>")
+
+  prononce: (textToPrononce) ->
+    url = "http://api.voicerss.org/?key=0fb100d6285c4016a785b8e8b638e006&src=#{encodeURIComponent(textToPrononce)}&hl=en-us"
+    audio = new Audio(url)
+    audio.play()
+
+  attached: ->
+    #bind translate function
+    @on 'click', 'button', =>
+      @translator().translate(@)
+
+    @on 'click', '.sound-picon', =>
+      @prononce(@getTextToTransate())
 
   removeSpinner: ->
     @ttaction.html("")
