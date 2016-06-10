@@ -48,3 +48,4 @@ module.exports = AtomTt =
 
       @ttView.translate()
       @modalPanel.show()
+      @ttView.focusSourceLang()

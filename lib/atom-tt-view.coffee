@@ -8,26 +8,23 @@ class TTView extends View
     @div class: 'block', =>
       @div class: 'row', =>
         @div class: 'col-md-1 col-md-offset-11 translate', =>
+          @div outlet: "ttaction", '&nbsp;'
           @button class: 'btn btn-info inline-block-tight', 'Translate'
       @div class: 'row', =>
         @div class: 'col-md-6', =>
           @div class: 'panel', =>
-            @span class: 'picon change-picon'
-            @span class: 'picon delete-picon'
-            @span class: 'picon edit-picon'
             @span class: 'picon list-picon'
             @span class: 'picon sound-picon'
+            @span class: 'source-lang-name', 'english'
+            @span class: 'picon change-picon'
             @span class: 'picon translate-picon'
           @subview 'srcLang', new TTEditorView
             placeholderText: 'Hi there, we are ready to translation ...', htmlClass: 'source-lang'
-        @div class: 'col-md-6', =>
+        @div class: 'col-md-6', style: 'padding-left: 0px;', =>
           @div class: 'panel', =>
-            @span class: 'picon change-picon'
-            @span class: 'picon delete-picon'
-            @span class: 'picon edit-picon'
-            @span class: 'picon list-picon'
-            @span class: 'picon sound-picon'
-            @span class: 'picon translate-picon'
+            @span class: 'dest-lang-name', 'russian'
+            @span class: 'picon sound-picon-right'
+            @span class: 'picon translate-picon-right'
           @subview 'destLang', new TTEditorView
             placeholderText: 'translation', htmlClass: 'dest-lang'
       @div class: 'row', =>
@@ -48,8 +45,10 @@ class TTView extends View
   getDirection: ->
     'en-ru'
 
+  focusSourceLang: ->
+    @srcLang.focus()
+
   translate: ->
-    @destLang.element.classList.add('is-focused')
     return if @instantTranslation
 
     @instantTranslation = true
@@ -57,23 +56,12 @@ class TTView extends View
       @translator().translate(@)
 
   setSpinner: ->
-    @description.append("<span class='loading loading-spinner-medium inline-block'></span>")
+    @ttaction.html("<progress class='inline-block'></progress>")
 
   removeSpinner: ->
-    @description.html('')
+    @ttaction.html("")
+    # @ttaction.html("<progress class='inline-block'></progress>")
     # @description.replaceWith('')
-
-    # @translation.setText(text)
-
-
-      # buffer: new TextBuffer(@textContent)
-      # softWrapped: false
-      # tabLength: 2
-      # softTabs: true
-      # mini: @hasAttribute('mini')
-      # lineNumberGutterVisible: not @hasAttribute('gutter-hidden')
-      # placeholderText: @getAttribute('placeholder-text')
-      #
 
 
 

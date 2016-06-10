@@ -9,6 +9,9 @@
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-workspace':
   'ctrl-cmd-\\': 'atom-tt:toggle'
+  # 'cmd-l': 'atom-tt:focus'
 
-'atom-workspace.tt-panel':
-  'escape': 'atom-tt:close'
+# 'atom-workspace .tt-panel':
+#   'cmd-l': 'atom-tt:focus'
+
+# 'atom-workspace':

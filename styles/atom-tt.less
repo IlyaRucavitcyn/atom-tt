@@ -16,11 +16,19 @@ atom-panel.modal.tt-panel {
 
   .translate {
     button {
-      margin: 10px 0 20px 0;
+      position: absolute;
+      top: 7px;
+      right: 16px;
       text-transform: uppercase;
     }
 
-    height: 60px;
+    progress {
+      position: absolute;
+      top: 16px;
+      right: 126px;
+    }
+
+    height: 50px;
   }
 
 
@@ -32,19 +40,31 @@ atom-panel.modal.tt-panel {
     .picon {
       position: absolute;
       margin: 10px;
-      // float: left;
-      // margin-bottom: -25px;
-      // display: block;
       text-indent: -9999px;
       width: 16px;
       height: 16px;
     }
 
+    .source-lang-name {
+      position: absolute;
+      margin: 10px;
+      text-transform: uppercase;
+      right: 25px;
+    }
+
+    .dest-lang-name {
+      position: absolute;
+      margin: 10px;
+      text-transform: uppercase;
+      left: 0px;
+    }
+
     .change-picon {
-      right: 15px;
+      right: 0px;
       background: url(atom://atom-tt/icons/change.svg);
       background-size: 16px 16px;
     }
+
     .delete-picon {
       background: url(atom://atom-tt/icons/delete.svg);
       background-size: 16px 16px;
@@ -56,16 +76,31 @@ atom-panel.modal.tt-panel {
     }
 
     .list-picon {
+      left: 0px;
       background: url(atom://atom-tt/icons/list.svg);
       background-size: 16px 16px;
     }
 
     .sound-picon {
+      left: 30px;
+      background: url(atom://atom-tt/icons/sound.svg);
+      background-size: 16px 16px;
+    }
+
+    .sound-picon-right {
+      right: 30px;
       background: url(atom://atom-tt/icons/sound.svg);
       background-size: 16px 16px;
     }
 
     .translate-picon {
+      left: 60px;
+      background: url(atom://atom-tt/icons/translate.svg);
+      background-size: 16px 16px;
+    }
+
+    .translate-picon-right {
+      right: 0px;
       background: url(atom://atom-tt/icons/translate.svg);
       background-size: 16px 16px;
     }
@@ -78,6 +113,7 @@ atom-panel.modal.tt-panel {
 
   .dest-lang, .source-lang {
     border: 1px solid #181a1f;
+    border-radius: 3px;
     padding:  40px 10px 10px 10px;
     // border-color: @base-background-color;
     box-shadow: 0 0 0 1px @base-background-color;
