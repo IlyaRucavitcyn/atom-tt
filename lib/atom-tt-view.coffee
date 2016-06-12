@@ -13,7 +13,6 @@ class TTView extends View
       @div class: 'row', =>
         @div class: 'col-md-6', =>
           @div class: 'panel', =>
-            @span class: 'picon list-picon'
             @span class: 'picon sound-picon'
             @span class: 'source-lang-name', 'english'
             @span class: 'picon change-picon'
