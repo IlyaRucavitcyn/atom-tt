@@ -15,10 +15,6 @@ class TTEditorView extends View
     model.setPlaceholderText(placeholderText)
     model.setSoftWrapped(true)
 
-    if @element.__spacePenView?
-      @element.__spacePenView = this
-      @element.__allowViewAccess = true
-
     super
 
     @setModel(@element.getModel())
@@ -28,13 +24,9 @@ class TTEditorView extends View
   onDidStopChanging: (callback) ->
     @model.onDidStopChanging(callback)
 
-  # Public: Get the underlying editor model for this view.
-  #
   # Returns a `TextEditor`
   getModel: -> @model
 
-  # Public: Get the text of the editor.
-  #
   # Returns a `String`.
   getText: ->
     @model.getText()
@@ -43,8 +35,6 @@ class TTEditorView extends View
   setText: (text) ->
     @model.setText(text)
 
-  # Public: Determine whether the editor is or contains the active element.
-  #
   # Returns a `Boolean`.
   hasFocus: ->
     @element.hasFocus()
