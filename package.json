@@ -1,9 +1,16 @@
 {
   "name": "atom-tt",
   "main": "./lib/atom-tt",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Fast and Simple text translation inside in atom",
-  "keywords": ["translator", "dictionary", "yandex", "tt", "translation", "dic"],
+  "keywords": [
+    "translator",
+    "dictionary",
+    "yandex",
+    "tt",
+    "translation",
+    "dic"
+  ],
   "activationCommands": {
     "atom-workspace": "atom-tt:toggle"
   },
