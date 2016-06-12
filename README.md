@@ -2,7 +2,7 @@
 
 TT - is stands for `Text Translate` in `Russia` also known as [TT pistol](https://en.wikipedia.org/wiki/TT_pistol)
 
-![Fast & Simple in use](/design/pistol.jpg)
+![Fast & Simple in use](https://raw.githubusercontent.com/shemerey/atom-tt/master/design/pistol.jpg)
 
 This package aims to be a fast an reliable way to translate your text from any
 language to any language, select your text, hit `ctrl-cmd-\` and you will be
@@ -13,7 +13,7 @@ able to translate on any language you need
 Here is some basic workflow, you can use selected text or just type whatever you
 want to translate.
 
-![Demo](/design/demo.gif)
+![Demo](https://raw.githubusercontent.com/shemerey/atom-tt/master/design/demo.gif)
 
 ## OFFline
 
