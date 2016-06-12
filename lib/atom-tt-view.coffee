@@ -33,17 +33,56 @@ class TTView extends View
 
   destroy: ->
 
-  setTextToTransate: (text)->
-    @srcLang.setText(text)
+  getLangName: (code) ->
+    @codes ||= {
+      en: 'English',
+      ru: 'Russian',
+    }
+    @codes[code]
 
   getTextToTransate: ->
     @srcLang.getText()
 
+  setTextToTransate: (text) ->
+    @srcLang.setText(text)
+
+  getTranslatedText: ->
+    @destLang.getText()
+
+  setTranslatedText: (text) ->
+    @destLang.setText(text)
+
   translator: ->
     @transator ||= new YandexTranslator(atom.config.get('atom-tt.yandexApiKey'))
 
+  getSrcLangCode: ->
+    @srcLangCode ||= 'en'
+
+  setSrcLangCode: (code) ->
+    @.element.querySelector('.source-lang-name').innerHTML = @getLangName(code)
+    @srcLangCode = code
+
+  getDestLangCode: ->
+    @destLangCode ||= 'ru'
+
+  setDestLangCode: (code) ->
+    @.element.querySelector('.dest-lang-name').innerHTML = @getLangName(code)
+    @destLangCode = code
+
+  changeDirection: ->
+    from = @getSrcLangCode()
+    from_text = @getTextToTransate()
+    to = @getDestLangCode()
+    to_text = @getTranslatedText()
+
+    @setDestLangCode(from)
+    @setSrcLangCode(to)
+    @setTextToTransate(to_text)
+    @translate()
+
+
   getDirection: ->
-    'en-ru'
+    "#{@getSrcLangCode()}-#{@getDestLangCode()}"
 
   focusSourceLang: ->
     @srcLang.focus()
@@ -64,9 +103,13 @@ class TTView extends View
     )).play()
 
   attached: ->
+
     #bind translate function
     @on 'click', 'button', =>
       @translator().translate(@)
+
+    @on 'click', '.change-picon', =>
+      @changeDirection()
 
     @on 'click', '.sound-picon', =>
       @prononce(@getTextToTransate())

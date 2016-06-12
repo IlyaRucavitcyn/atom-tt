@@ -22,10 +22,10 @@ class YandexTranslator extends Translator
 
     request(@getOptions()).then((response) ->
       if text = response.text[0]
-        view.destLang.setText(text)
+        view.setTranslatedText(text)
         view.removeSpinner()
       else
-        view.destLang.setText('uups nothing to translate')
+        view.setTranslatedText('uups nothing to translate')
         view.removeSpinner()
     ).catch((err) ->
       view.destLang.setText('uups :(')
