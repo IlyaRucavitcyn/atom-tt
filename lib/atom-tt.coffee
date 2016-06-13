@@ -41,7 +41,7 @@ module.exports = AtomTt =
     if @modalPanel.isVisible()
       @modalPanel.hide()
     else
-      if textToTransate.length == 0 and selectedText.length > 0
+      if textToTransate.length == 0 and selectedText? and selectedText.length > 0
         @ttView.setTextToTransate(selectedText)
       else
         @ttView.setTextToTransate(textToTransate)
