@@ -9,6 +9,7 @@
     "yandex",
     "tt",
     "translation",
+    "thesaurus",
     "dic"
   ],
   "activationCommands": {
@@ -24,7 +25,6 @@
     "cheerio": "^0.20.0",
     "mockery": "^1.4.1",
     "request-promise": "^2.0.1",
-    "space-pen": "^5.1.2",
-    "synonymator": "0.0.1"
+    "space-pen": "^5.1.2"
   }
 }

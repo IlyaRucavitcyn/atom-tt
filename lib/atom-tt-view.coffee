@@ -1,6 +1,7 @@
 {View} = require 'space-pen'
 TTEditorView = require './tt-editor-view'
 YandexTranslator = require './yandex-translator'
+WordDescriptionView = require './word-description-view'
 
 module.exports =
 class TTView extends View
@@ -105,9 +106,9 @@ class TTView extends View
     @ttaction.html("<progress class='inline-block'></progress>")
 
   getWordDescription: (word) ->
-    return if word.length == 0
-    console.log word
-    @description.html("one word #{word}")
+    return unless word
+    return if 'en' != @getSrcLangCode()
+    @description.html(new WordDescriptionView(word))
 
   cleanUpDescription: ->
     @description.html('')
