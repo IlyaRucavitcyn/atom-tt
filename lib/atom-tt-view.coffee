@@ -5,27 +5,29 @@ YandexTranslator = require './yandex-translator'
 module.exports =
 class TTView extends View
   @content: ->
-    @div class: 'block', =>
+    @div class: 'elock', =>
       @div class: 'row', =>
         @div class: 'col-md-1 col-md-offset-11 translate', =>
           @div outlet: "ttaction", '&nbsp;'
           @button class: 'btn btn-info inline-block-tight transbtnaction', 'Translate'
       @div class: 'row', =>
         @div class: 'col-md-6', =>
-          @div class: 'panel', =>
-            @span class: 'picon sound-picon'
-            @span class: 'source-lang-name', 'english'
-            @span class: 'picon change-picon'
-            @span class: 'picon translate-picon'
-          @subview 'srcLang', new TTEditorView
-            placeholderText: 'Hi there, we are ready to translation ...', htmlClass: 'source-lang'
+          @section class: 'src', =>
+            @div class: 'panel', =>
+              @span class: 'picon sound-picon'
+              @span class: 'source-lang-name', 'english'
+              @span class: 'picon change-picon'
+              @span class: 'picon translate-picon'
+            @subview 'srcLang', new TTEditorView
+              placeholderText: 'Hi there, we are ready to translation ...', htmlClass: 'source-lang'
         @div class: 'col-md-6', style: 'padding-left: 0px;', =>
-          @div class: 'panel', =>
-            @span class: 'dest-lang-name', 'russian'
-            @span class: 'picon sound-picon-right'
-            @span class: 'picon translate-picon-right'
-          @subview 'destLang', new TTEditorView
-            placeholderText: 'translation', htmlClass: 'dest-lang'
+          @section class: 'dest', =>
+            @div class: 'panel', =>
+              @span class: 'dest-lang-name', 'russian'
+              @span class: 'picon sound-picon-right'
+              @span class: 'picon translate-picon-right'
+            @subview 'destLang', new TTEditorView
+              placeholderText: 'translation', htmlClass: 'dest-lang'
       @div class: 'row', =>
         @div class: 'col-md-6', =>
           @div outlet: "description"
@@ -93,8 +95,22 @@ class TTView extends View
     @srcLang.onDidStopChanging =>
       @translator().translate(@)
 
+      words = @getTextToTransate().split(/\s/).filter((x) -> x.length > 1)
+      if words.length == 1
+        @getWordDescription(words[0])
+      else
+        @cleanUpDescription()
+
   setSpinner: ->
     @ttaction.html("<progress class='inline-block'></progress>")
+
+  getWordDescription: (word) ->
+    return if word.length == 0
+    console.log word
+    @description.html("one word #{word}")
+
+  cleanUpDescription: ->
+    @description.html('')
 
   prononce: (textToPrononce) ->
     (new Audio(

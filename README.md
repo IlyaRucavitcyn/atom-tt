@@ -33,3 +33,8 @@ word with full description and dict article for it.
 - [x] Design the app
 - [ ] Write some spec
 - [x] Setup env   
+
+
+### Credits
+
+* Thesaurus service provided by words.bighugelabs.com
