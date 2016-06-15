@@ -21,7 +21,7 @@ class TTView extends View
               @span class: 'picon translate-picon'
             @subview 'srcLang', new TTEditorView
               placeholderText: 'Hi there, we are ready to translation ...', htmlClass: 'source-lang'
-        @div class: 'col-md-6', style: 'padding-left: 0px;', =>
+        @div class: 'col-md-6',  =>
           @section class: 'dest', =>
             @div class: 'panel', =>
               @span class: 'dest-lang-name', 'russian'
