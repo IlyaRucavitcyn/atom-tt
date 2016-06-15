@@ -8,8 +8,8 @@ class TTView extends View
   @content: ->
     @div class: 'elock', =>
       @div class: 'row', =>
-        @div class: 'col-md-1 col-md-offset-11 translate', =>
-          @div outlet: "ttaction", '&nbsp;'
+        @div class: 'col-md-12 translate text-right', =>
+          @div outlet: "ttaction", ''
           @button class: 'btn btn-info inline-block-tight transbtnaction', 'Translate'
       @div class: 'row', =>
         @div class: 'col-md-6', =>
