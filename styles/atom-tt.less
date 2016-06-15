@@ -3,186 +3,151 @@
 // See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
 // for a full listing of what's available.
 @import "ui-variables";
-
 atom-panel.modal.tt-panel {
-  width: 100%;
-  min-width: 100%;
-  height: 100%;
-  min-height: 900px;
-
-  .block {
-    padding: 0 10px 0 10px;
-  }
-
-  .translate {
-    button {
-      position: absolute;
-      top: 7px;
-      right: 16px;
-      text-transform: uppercase;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    min-height: 900px;
+    .block {
+        padding: 0 10px;
     }
-
-    progress {
-      position: absolute;
-      top: 16px;
-      right: 126px;
+    .translate {
+        button {
+            // position: absolute;
+            // top: 7px;
+            // right: 16px;
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+        .progress {
+            display: inline-block;
+            margin: auto 10px;
+        }
     }
-
-    height: 50px;
-  }
-
-
-  /*********************/
-  .decresults {
-    margin: 20px 0 20px 15px;
-
-    h3 {
-      margin: 20px 0 0 0;
-      font-size: 20px;
-      font-style: italic;
+    /*********************/
+    .decresults {
+        margin: 20px 0 20px 15px;
+        h3 {
+            margin: 20px 0 0;
+            font-size: 20px;
+            font-style: italic;
+        }
+        h4 {
+            font-size: 15px;
+            margin: 20px 0 10px 20px;
+        }
+        ol {
+            list-style: none;
+            margin: 0 0 0 20px;
+            padding: 0;
+            line-height: 1.5em;
+            overflow: auto;
+            width: inherit;
+            clear: both;
+            li {
+                margin: 0;
+                padding: 0 20px 0 0;
+                float: left;
+            }
+        }
     }
-
-    h4 {
-      font-size: 15px;
-      margin: 20px 0 10px 20px;
+    /*********************/
+    .panel {
+        position: relative;
+        margin-bottom: -40px;
+        height: 40px;
+        .picon {
+            position: absolute;
+            margin: 10px;
+            text-indent: -9999px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .source-lang-name {
+            position: absolute;
+            margin: 10px;
+            text-transform: uppercase;
+            right: 25px;
+        }
+        .dest-lang-name {
+            position: absolute;
+            margin: 10px;
+            text-transform: uppercase;
+            left: 0;
+        }
+        .change-picon {
+            right: 0;
+            background: url("atom://atom-tt/icons/change.svg");
+            background-size: 16px 16px;
+        }
+        .delete-picon {
+            background: url("atom://atom-tt/icons/delete.svg");
+            background-size: 16px 16px;
+        }
+        .edit-picon {
+            background: url("atom://atom-tt/icons/edit.svg");
+            background-size: 16px 16px;
+        }
+        .list-picon {
+            left: 0;
+            background: url("atom://atom-tt/icons/list.svg");
+            background-size: 16px 16px;
+        }
+        .sound-picon {
+            left: 0;
+            background: url("atom://atom-tt/icons/sound.svg");
+            background-size: 16px 16px;
+        }
+        .sound-picon-right {
+            right: 30px;
+            background: url("atom://atom-tt/icons/sound.svg");
+            background-size: 16px 16px;
+        }
+        .translate-picon {
+            left: 30px;
+            background: url("atom://atom-tt/icons/translate.svg");
+            background-size: 16px 16px;
+        }
+        .translate-picon-right {
+            right: 0;
+            background: url("atom://atom-tt/icons/translate.svg");
+            background-size: 16px 16px;
+        }
     }
-
-    ol {
-      list-style: none;
-      margin: 0 0 0 20px;
-      padding: 0;
-      line-height: 1.5em;
-      overflow: auto;
-      width: inherit;
-      clear: both;
-
-      li {
-        margin: 0;
-        padding: 0 20px 0 0;
-        float: left;
-      }
+    .source-lang.is-focused {
+        border-color: #528bff;
+        box-shadow: 0 0 0 1px #528bff;
     }
-  }
-
-  /*********************/
-
-  .panel {
-    position: relative;
-    margin-bottom: -40px;
-    height: 40px;
-
-    .picon {
-      position: absolute;
-      margin: 10px;
-      text-indent: -9999px;
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
+    .dest-lang,
+    .source-lang {
+        border: 1px solid #181a1f;
+        border-radius: 3px;
+        padding: 40px 10px 10px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 0 1px @base-background-color;
     }
-
-    .source-lang-name {
-      position: absolute;
-      margin: 10px;
-      text-transform: uppercase;
-      right: 25px;
+    .dest-lang {
+        background-color: @background-color-highlight;
     }
-
-    .dest-lang-name {
-      position: absolute;
-      margin: 10px;
-      text-transform: uppercase;
-      left: 0px;
+    atom-text-editor::shadow {
+        .gutter {
+            display: none;
+        }
+        .cursor-line {
+            background: none;
+        }
+        .cursor {
+            border-color: red;
+        }
+        .indent-guide {
+            box-shadow: none;
+        }
+        .gutter-container {
+            display: none;
+        }
+        .indent-guide {
+            box-shadow: none;
+        }
     }
-
-    .change-picon {
-      right: 0px;
-      background: url(atom://atom-tt/icons/change.svg);
-      background-size: 16px 16px;
-    }
-
-    .delete-picon {
-      background: url(atom://atom-tt/icons/delete.svg);
-      background-size: 16px 16px;
-    }
-
-    .edit-picon {
-      background: url(atom://atom-tt/icons/edit.svg);
-      background-size: 16px 16px;
-    }
-
-    .list-picon {
-      left: 0px;
-      background: url(atom://atom-tt/icons/list.svg);
-      background-size: 16px 16px;
-    }
-
-    .sound-picon {
-      left: 0px;
-      background: url(atom://atom-tt/icons/sound.svg);
-      background-size: 16px 16px;
-    }
-
-    .sound-picon-right {
-      right: 30px;
-      background: url(atom://atom-tt/icons/sound.svg);
-      background-size: 16px 16px;
-    }
-
-    .translate-picon {
-      left: 30px;
-      background: url(atom://atom-tt/icons/translate.svg);
-      background-size: 16px 16px;
-    }
-
-    .translate-picon-right {
-      right: 0px;
-      background: url(atom://atom-tt/icons/translate.svg);
-      background-size: 16px 16px;
-    }
-  }
-
-  .source-lang.is-focused {
-    border-color: #528bff;
-    box-shadow: 0 0 0 1px #528bff;
-  }
-
-  .dest-lang, .source-lang {
-    border: 1px solid #181a1f;
-    border-radius: 3px;
-    padding:  40px 10px 10px 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 0 0 1px @base-background-color;
-  }
-
-  .dest-lang {
-    background-color: @background-color-highlight;
-  }
-
-
-  atom-text-editor::shadow {
-    .gutter {
-      display: none;
-    }
-
-    .cursor-line {
-      background: none;
-    }
-
-    .cursor {
-      border-color: red;
-    }
-
-    .indent-guide {
-      box-shadow: none;
-    }
-
-    .gutter-container {
-      display: none;
-    }
-
-    .indent-guide {
-      box-shadow: none;
-    }
-
-  }
 }
